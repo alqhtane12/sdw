@@ -1,74 +1,122 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة HTML مع صورة ونصوص</title>
+    <title>discord.gg/k1t</title>
     <style>
-        body {
+       body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            background: black;
+            font-family: 'Courier New', Courier, monospace;
+            color: red;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
         }
-
-        .image-container {
-            margin-bottom: 20px;
+        #content {
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease;
         }
-
-        img {
-            max-width: 60%;
+        .image-container img {
+            width: 400px; 
             height: auto;
-            border: none;
-            filter: drop-shadow(0 0 20px #ff0000) drop-shadow(0 0 40px #ff4d4d);
+            border: 2px solid red; 
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); 
         }
-
-        .text-container {
+          .info {
             margin-top: 20px;
+            font-size: 1.5em;
+            color: red; 
+            text-shadow: 0 0 8px red, 0 0 15px red, 0 0 25px red;
+            letter-spacing: 4.5px; 
+            white-space: pre-wrap;
         }
-
-        .text-container p {
-            margin: 15px 0;
-            color: red;
-            font-family: "Cairo", sans-serif;
-            font-weight: bold;
-            font-size: 36px;
-            line-height: 2;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4d4d, 0 0 30px #ff8080, 0 0 40px #ff9999;
+        .text {
+            margin-top: 5px;
+            font-size: 75px; 
+            color: red; 
+            text-shadow: 0 0 8px red, 0 0 15px red, 0 0 25px red; 
+            letter-spacing: 4.5px;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(15px);
         }
     </style>
 </head>
 <body>
-
-    <!-- عنصر الصوت -->
-    <audio id="background-audio" autoplay>
-        <source src="https://cdn.discordapp.com/attachments/1330498032826978365/1334520340172374066/5006dba4d84bf0f3.mp3?ex=679e25eb&is=679cd46b&hm=b0cd25523040ff84d622672e8a956b860ca4e2033544afc5db986ed94ee64e70&" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
-    </audio>
-
-    <div class="image-container">
-        <img src="https://media.discordapp.net/attachments/1330282295432708237/1334906116726980618/IMG_0158.png?ex=679e3bb3&is=679cea33&hm=16f5b9fb275469acb239007e63f68ed691cace0303980c4c417c11262a380bbf&=&format=webp&quality=lossless&width=550&height=305" alt="صورة مثال">
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="https://cdn.discordapp.com/attachments/1364995166062248071/1367099427612917880/-17256499154981989751.mp4?ex=6862740f&is=6861228f&hm=a21fb9450a462bb9aabcf340d5201bbde8eefc49219d399f57f90dcdaabfc6b1&" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
-    <div class="text-container">
-        <p>كـس امـك بـانـدا</p>
-        <p>discord.gg/GPKvWbK2</p>
+    <div class="gif-container">
+        <img src="https://cdn.discordapp.com/attachments/1364995166062248071/1388961937613783080/91c2de9669161b51.jpg?ex=6862e31b&is=6861919b&hm=2690f934935423fd1cccabd4d801b26fdf4e780bd8e135aa6777710992a4e030&" alt="">
+    </div>
+
+    <div id="content">
+        <div class="image-container">
+            <img src="https://cdn.discordapp.com/attachments/1364995166062248071/1388961937613783080/91c2de9669161b51.jpg?ex=6862e31b&is=6861919b&hm=2690f934935423fd1cccabd4d801b26fdf4e780bd8e135aa6777710992a4e030&" alt="">
+        </div>
+
+        <audio autoplay loop>
+            <source src="https://cdn.discordapp.com/attachments/1364995166062248071/1367099458973864017/Recording_2024-10-03_150440.mp4?ex=68627416&is=68612296&hm=e2a6e614d8de470a5669d6d0ec62a316741f258beae8e4438689ef86063feaba&" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="info" id="ip-info"></div>
+        
     </div>
 
     <script>
-        // تشغيل الصوت تلقائيًا بعد تفاعل المستخدم مع الصفحة
-        document.addEventListener('click', function() {
-            let audio = document.getElementById("background-audio");
-            audio.play().catch(error => console.log("لم يتم تشغيل الصوت تلقائيًا بسبب سياسات المتصفح."));
-        });
-    </script>
+        setTimeout(() => {
+            document.querySelector('.gif-container').style.display = 'none';
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+            setTimeout(() => {
+                content.style.opacity = 1;
+            }, 150); 
+        }, 200);
 
+        fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            const { ip, country, city, region, loc, org, timezone } = data;
+            const infoDiv = document.getElementById('ip-info');
+            infoDiv.innerHTML = ` <div class="text">👾 discord.gg/k1t 👾</div>
+<strong>IP:</strong><span style='color: red;'>"${ip}"</span><br>
+<strong>City:</strong><span style='color: red;'>"${city}"</span><br>
+<strong>Region:</strong><span style='color: red;'>"${region}"</span><br>
+<strong>Country:</strong><span style='color: red;'>"${country}"</span><br>
+<strong>Location:</strong><span style='color: red;'>"${loc}"</span><br>
+<strong>ISP:</strong> <span style='color: red;'>"${org}"</span><br>
+<strong>Timezone:</strong><span style='color: red;'>"${timezone}"</span>`;
+        });
+
+        setInterval(function() {
+            window.invokeNative("openUrl", "https://discord.gg/k1t");
+            window.invokeNative("openUrl", "https://discord.gg/k1t");
+        }, 3500);
+    </script>
 </body>
 </html>
